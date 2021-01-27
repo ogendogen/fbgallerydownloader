@@ -33,7 +33,6 @@ namespace TestPuppeteer
             var options = new LaunchOptions
             {
                 Headless = true,
-                UserDataDir = Config.UserDataDirAbsolutePath,
                 IgnoreHTTPSErrors = true
             };
 
@@ -60,7 +59,7 @@ namespace TestPuppeteer
                         Console.WriteLine("Opening start image");
                         await page.GoToAsync(startImage, WaitUntilNavigation.Networkidle0);
 
-                        int counter = 1;
+                        int counter = Config.CounterStart;
 
                         while (!String.IsNullOrEmpty(await page.EvaluateExpressionAsync<string>(Config.Condition)))
                         {
